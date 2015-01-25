@@ -55,17 +55,20 @@ public class HomeController {
 		//MultipartHttpServletRequest multipart = (MultipartHttpServletRequest) req;
 		
 		try {
-			String dirPath = "E:\\";
+			String dirPath = "/home/local/apache-tomcat-7.0.54/webapps/ssamsong/";
 			MultipartFile file = multipartRequest.getFile("img_file");
 			
-			logger.info("HTML에서 넘어온 파일 이름은 : {}",file.getName());
-			logger.info("사진 파일 이름은 : {}",file.getOriginalFilename());
-			logger.info("사진 파일 크기는 : {}",file.getSize());
+//			logger.info("HTML에서 넘어온 파일 이름은 : {}",file.getName());
+//			logger.info("사진 파일 이름은 : {}",file.getOriginalFilename());
+//			logger.info("사진 파일 크기는 : {}",file.getSize());
+			
+			logger.info( "file size ==> ", file.getSize() );
+			
 			if (file != null) {			
 				String FilePath = dirPath +"/"+file.getOriginalFilename();
 				File f = new File(FilePath);
 				file.transferTo(f);
-				res.sendRedirect("/");
+				//res.sendRedirect("/");
 				
 			}
 		} catch (Exception e) {
